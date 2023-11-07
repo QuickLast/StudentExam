@@ -36,5 +36,14 @@ namespace StudentExam.pages
         {
             NavigationService.Navigate(new LoginPage());
         }
+
+        private void ExamLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ExamLV.SelectedItem as Exam;
+            if (item != null)
+            {
+                NavigationService.Navigate(new StudentsExamPage(item, empToSend));
+            }
+        }
     }
 }

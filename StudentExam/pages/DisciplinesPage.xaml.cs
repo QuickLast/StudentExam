@@ -1,5 +1,4 @@
-﻿using StudentExam.db;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,19 +16,13 @@ using System.Windows.Shapes;
 namespace StudentExam.pages
 {
     /// <summary>
-    /// Логика взаимодействия для GuestPage.xaml
+    /// Логика взаимодействия для DisciplinesPage.xaml
     /// </summary>
-    public partial class GuestPage : Page
+    public partial class DisciplinesPage : Page
     {
-        public GuestPage()
+        public DisciplinesPage()
         {
             InitializeComponent();
-            DisciplineLV.ItemsSource = DBConn.SEnt.Discipline.ToList();
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new LoginPage());
         }
     }
 }

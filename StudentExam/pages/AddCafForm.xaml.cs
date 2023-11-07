@@ -43,18 +43,11 @@ namespace StudentExam.pages
                 ErrorTBk.Text = "Введите данные!";
                 errCounter++;
             }
-            else if (CipherIDTBx.Text.Trim().Length == 2  || AbbrIDCB.SelectedItem.ToString().Trim().Length == 2)
-            {
-                ErrorTBk.Text = "Длина аббревиатур должна быть равна двум символам!";
-                errCounter++;
-            }
-            else
+            if (errCounter == 0)
             {
                 string CafID = CipherIDTBx.Text.Trim();
                 string name = NameTBx.Text.Trim();
-                string FacID = AbbrIDCB.SelectedItem.ToString().Trim();
-
-                // вставить сюда
+                string FacID = (AbbrIDCB.SelectedItem as Faculty).AbbrID;
 
                 cafedra.CipherID = CafID;
                 cafedra.Name = name;

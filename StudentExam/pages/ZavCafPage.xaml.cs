@@ -40,5 +40,15 @@ namespace StudentExam.pages
         {
             NavigationService.Navigate(new AddCafForm(empToSend));
         }
+
+        private void CafLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = CafLV.SelectedItem as Cafedra;
+            if (item != null)
+            {
+                NavigationService.Navigate(new StudentsExamPage(item, empToSend));
+            }
+        }
+    }
     }
 }

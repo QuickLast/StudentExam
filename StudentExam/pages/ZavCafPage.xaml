@@ -45,7 +45,7 @@
             <Button Name="AddCafBtn"  Width="35" Content="+" Grid.Column="12" Click="AddCafBtn_Click" Height="35" Margin="13,0" VerticalAlignment="Top"/>
             <TextBlock Name="ZavNameTBk" Grid.Column="7" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20">Зав.Кафедрой:</TextBlock>
 
-            <ListView Name="CafLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="11">
+            <ListView Name="CafLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="11" SelectionChanged="CafLV_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>

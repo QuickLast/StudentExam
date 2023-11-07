@@ -17,32 +17,25 @@ using System.Windows.Shapes;
 namespace StudentExam.pages
 {
     /// <summary>
-    /// Логика взаимодействия для EngineerPage.xaml
+    /// Логика взаимодействия для StudentsExamPage.xaml
     /// </summary>
-    public partial class EngineerPage : Page
+    public partial class StudentsExamPage : Page
     {
+        Exam examToSend = new Exam();
         Employee empToSend = new Employee();
-        public EngineerPage(Employee emp)
+        public StudentsExamPage(Exam exam, Employee teacher)
         {
             InitializeComponent();
-            empToSend = emp;
-            EmpLV.ItemsSource = DBConn.SEnt.Employee.ToList();
-            EngNameTBk.Text += $" {emp.Surname}";
+            examToSend = exam;
+            empToSend = teacher;
+            DisciplineNameTBk.Text += $" {(DBConn.SEnt.Discipline.Where(x => x.DisciplineID == exam.DisciplineID).ToList()[0] as Discipline).Name}";
+            DateTBk.Text += $" {exam.ExamDate}";
+            StudentsLV.ItemsSource = DBConn.SEnt.Student.Where(x => x.RegID == exam.RegID).ToList();
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new LoginPage());
-        }
-
-        private void EmpLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = EmpLV.SelectedItem as Employee;
-            if (item != null)
-            {
-                NavigationService.Navigate(new EmployeeInfoPage(item as Employee, empToSend));
-            }
-
+            NavigationService.Navigate(new TeacherPage(empToSend));
         }
     }
 }

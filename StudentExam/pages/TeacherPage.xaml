@@ -43,7 +43,7 @@
         <Button Name="BackBtn" Content="Back" Click="BackBtn_Click"/>
         <TextBlock Name="PrepNameTBk" Grid.Column="8" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20">Преподаватель: </TextBlock>
 
-        <ListView Name="ExamLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="11">
+        <ListView Name="ExamLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="11" SelectionChanged="ExamLV_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -60,6 +60,13 @@
                                     <TextBlock Text="{Binding DisciplineID}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="RegID">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RegID}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView.Columns>
                 </GridView>

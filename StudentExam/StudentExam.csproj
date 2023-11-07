@@ -151,6 +151,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\DisciplinesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\EditEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\EmployeeInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\EngineerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\StudentsExamPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +192,15 @@
     <Compile Include="pages\AddCafForm.xaml.cs">
       <DependentUpon>AddCafForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\DisciplinesPage.xaml.cs">
+      <DependentUpon>DisciplinesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EditEmployeePage.xaml.cs">
+      <DependentUpon>EditEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EmployeeInfoPage.xaml.cs">
+      <DependentUpon>EmployeeInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\EngineerPage.xaml.cs">
       <DependentUpon>EngineerPage.xaml</DependentUpon>
     </Compile>
@@ -184,6 +209,9 @@
     </Compile>
     <Compile Include="pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\StudentsExamPage.xaml.cs">
+      <DependentUpon>StudentsExamPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\TeacherPage.xaml.cs">
       <DependentUpon>TeacherPage.xaml</DependentUpon>
