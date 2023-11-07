@@ -151,7 +151,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\AddDiscipline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\AddStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\DisciplinesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\EditCafedraPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,8 +204,17 @@
     <Compile Include="pages\AddCafForm.xaml.cs">
       <DependentUpon>AddCafForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\AddDiscipline.xaml.cs">
+      <DependentUpon>AddDiscipline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AddStudent.xaml.cs">
+      <DependentUpon>AddStudent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\DisciplinesPage.xaml.cs">
       <DependentUpon>DisciplinesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EditCafedraPage.xaml.cs">
+      <DependentUpon>EditCafedraPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\EditEmployeePage.xaml.cs">
       <DependentUpon>EditEmployeePage.xaml</DependentUpon>

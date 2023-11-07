@@ -68,6 +68,13 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        <GridViewColumn Header="Mark">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Mark}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

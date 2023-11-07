@@ -37,5 +37,28 @@ namespace StudentExam.pages
         {
             NavigationService.Navigate(new TeacherPage(empToSend));
         }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddStudent(examToSend, empToSend));
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var item = StudentsLV.SelectedItem as Student;
+            if (item != null)
+            {
+                try
+                {
+                    DBConn.SEnt.Exam.Remove(DBConn.SEnt.Exam.Where(x => x.RegID == item.RegID) as Exam);
+                    DBConn.SEnt.SaveChanges();
+                }
+                catch
+                {
+                    MessageBox.Show("Произошла ошибка. Возможно, данная запись экзамена связана с другими таблицами");
+                }
+                NavigationService.Navigate(new TeacherPage(empToSend));
+            }
+        }
     }
 }

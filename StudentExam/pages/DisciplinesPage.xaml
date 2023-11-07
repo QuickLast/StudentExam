@@ -41,23 +41,29 @@
         </Grid.RowDefinitions>
 
         <Button Name="BackBtn" Content="Back" Click="BackBtn_Click"/>
-        <TextBlock Name="DisciplineNameTBk" Grid.Column="8" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20">Экзамен по:</TextBlock>
-        <TextBlock Name="DateTBk" Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20">Дата:</TextBlock>
-        <ListView Name="StudentsLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="11">
+        <TextBlock Name="CafTBk" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20"></TextBlock>
+        <ListView Name="DiscLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="11">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="RegID">
+                        <GridViewColumn Header="DisciplineID">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding RegID}"/>
+                                    <TextBlock Text="{Binding DisciplineID}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Surname">
+                        <GridViewColumn Header="Name">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Surname}"/>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="NumberOfHours">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NumberOfHours}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -66,7 +72,9 @@
             </ListView.View>
         </ListView>
 
-        <Button Name="DeleteBtn" Content="Delete" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="11"/>
-        <Button Name="AddBtn" Content="Add" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="11"/>
+        <Button Name="DeleteBtn" Content="Delete Cafedra" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="11" Click="DeleteBtn_Click" HorizontalAlignment="Left" Width="123"/>
+        <Button Name="EditBtn" Content="Edit Cafedra" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Click="EditBtn_Click"/>
+        <Button Name="AddBtn" Content="Add Discipline" Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Click="AddBtn_Click"/>
+        <Button Name="DeleteDiscBtn" Content="Delete Discipline" Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="11" Click="DeleteDiscBtn_Click"/>
     </Grid>
 </Page>

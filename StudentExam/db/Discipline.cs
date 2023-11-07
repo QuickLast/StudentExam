@@ -17,8 +17,8 @@ namespace StudentExam.db
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Discipline()
         {
-            this.Speciality = new HashSet<Speciality>();
             this.Exam = new HashSet<Exam>();
+            this.Speciality = new HashSet<Speciality>();
         }
     
         public int DisciplineID { get; set; }
@@ -28,8 +28,8 @@ namespace StudentExam.db
     
         public virtual Cafedra Cafedra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Speciality> Speciality { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Speciality> Speciality { get; set; }
     }
 }

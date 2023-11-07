@@ -46,9 +46,9 @@ namespace StudentExam.pages
             var item = CafLV.SelectedItem as Cafedra;
             if (item != null)
             {
-                NavigationService.Navigate(new StudentsExamPage(item, empToSend));
+                NavigationService.Navigate(new DisciplinesPage(item, empToSend));
             }
         }
     }
     }
-}
+

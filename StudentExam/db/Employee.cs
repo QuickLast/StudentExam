@@ -31,9 +31,9 @@ namespace StudentExam.db
     
         public virtual Cafedra Cafedra { get; set; }
         public virtual Engineer Engineer { get; set; }
-        public virtual Teacher Teacher { get; set; }
-        public virtual ZavCafedra ZavCafedra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
+        public virtual Teacher Teacher { get; set; }
+        public virtual ZavCafedra ZavCafedra { get; set; }
     }
 }

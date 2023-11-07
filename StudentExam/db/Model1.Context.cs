@@ -32,6 +32,7 @@ namespace StudentExam.db
         public virtual DbSet<Discipline> Discipline { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Engineer> Engineer { get; set; }
+        public virtual DbSet<Exam> Exam { get; set; }
         public virtual DbSet<Faculty> Faculty { get; set; }
         public virtual DbSet<Speciality> Speciality { get; set; }
         public virtual DbSet<Student> Student { get; set; }
@@ -42,6 +43,5 @@ namespace StudentExam.db
         public virtual DbSet<ZavCafedra> ZavCafedra { get; set; }
         public virtual DbSet<Ученики> Ученики { get; set; }
         public virtual DbSet<Гимназисты> Гимназисты { get; set; }
-        public virtual DbSet<Exam> Exam { get; set; }
     }
 }
