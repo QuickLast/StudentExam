@@ -17,28 +17,20 @@ using System.Windows.Shapes;
 namespace StudentExam.pages
 {
     /// <summary>
-    /// Логика взаимодействия для ZavCafPage.xaml
+    /// Логика взаимодействия для GuestPage.xaml
     /// </summary>
-    public partial class ZavCafPage : Page
+    public partial class GuestPage : Page
     {
-        Employee empToSend = new Employee();
-        public static List<Exam> Exam { get; set; }
-        public ZavCafPage(Employee emp)
+        public static List<Discipline> Disciplines { get; set; }
+        public GuestPage()
         {
             InitializeComponent();
-            empToSend = emp;
-            CafLV.ItemsSource = DBConn.SEnt.Cafedra.ToList();
-            ZavNameTBk.Text += $" {emp.Surname}";
+            DisciplineLV.ItemsSource = DBConn.SEnt.Discipline.ToList();
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new LoginPage());
-        }
-
-        private void AddCafBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddCafForm(empToSend));
         }
     }
 }

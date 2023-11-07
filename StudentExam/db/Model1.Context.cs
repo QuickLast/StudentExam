@@ -13,10 +13,10 @@ namespace StudentExam.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SEntities : DbContext
+    public partial class SEnt : DbContext
     {
-        public SEntities()
-            : base("name=SEntities")
+        public SEnt()
+            : base("name=SEnt")
         {
         }
     
@@ -42,5 +42,6 @@ namespace StudentExam.db
         public virtual DbSet<ZavCafedra> ZavCafedra { get; set; }
         public virtual DbSet<Ученики> Ученики { get; set; }
         public virtual DbSet<Гимназисты> Гимназисты { get; set; }
+        public virtual DbSet<Exam> Exam { get; set; }
     }
 }

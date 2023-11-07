@@ -18,6 +18,7 @@ namespace StudentExam.db
         public Speciality()
         {
             this.Student = new HashSet<Student>();
+            this.Discipline = new HashSet<Discipline>();
         }
     
         public string SpecialityID { get; set; }
@@ -27,5 +28,7 @@ namespace StudentExam.db
         public virtual Cafedra Cafedra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Student { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Discipline> Discipline { get; set; }
     }
 }

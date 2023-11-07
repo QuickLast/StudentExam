@@ -1,4 +1,4 @@
-﻿<Page x:Class="StudentExam.pages.TeacherPage"
+﻿<Page x:Class="StudentExam.pages.GuestPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:StudentExam.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TeacherPage">
+      Title="GuestPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -41,23 +41,23 @@
         </Grid.RowDefinitions>
 
         <Button Name="BackBtn" Content="Back" Click="BackBtn_Click"/>
-        <TextBlock Name="PrepNameTBk" Grid.Column="8" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20">Преподаватель: </TextBlock>
+        <TextBlock  Grid.Column="8" Grid.ColumnSpan="5" VerticalAlignment="Center" FontSize="20">Просмотр дисциплин как: Гость</TextBlock>
 
-        <ListView Name="ExamLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="11">
+        <ListView Name="DisciplineLV" Grid.Row="2" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="11">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Date">
+                        <GridViewColumn Header="Name">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding ExamDate}"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Discipline">
+                        <GridViewColumn Header="Amount">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding DisciplineID}"/>
+                                    <TextBlock Text="{Binding NumberOfHours}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

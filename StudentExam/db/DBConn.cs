@@ -8,6 +8,6 @@ namespace StudentExam.db
 {
     public class DBConn
     {
-        public static SEntities SEnt = new SEntities();
+        public static SEnt SEnt = new SEnt();
     }
 }

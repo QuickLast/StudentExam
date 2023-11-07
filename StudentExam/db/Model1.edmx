@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище SModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UchebniPracticeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Academics">
           <Key>
             <PropertyRef Name="ID" />
@@ -15,6 +15,13 @@
           <Property Name="Specialization" Type="nvarchar" MaxLength="100" />
           <Property Name="YearAward" Type="int" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "UchebniPractice.dbo.Animals_Osipov" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Animals_Osipov">
+          <Property Name="ID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Squad" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
         <EntityType Name="Cafedra">
           <Key>
             <PropertyRef Name="CipherID" />
@@ -75,6 +82,18 @@
           <Property Name="EngID" Type="int" Nullable="false" />
           <Property Name="SpecialityName" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Exam">
+          <Key>
+            <PropertyRef Name="ExamDate" />
+            <PropertyRef Name="RegID" />
+          </Key>
+          <Property Name="ExamDate" Type="date" Nullable="false" />
+          <Property Name="DisciplineID" Type="int" Nullable="false" />
+          <Property Name="RegID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Auditorium" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mark" Type="int" />
+        </EntityType>
         <EntityType Name="Faculty">
           <Key>
             <PropertyRef Name="AbbrID" />
@@ -82,6 +101,13 @@
           <Property Name="AbbrID" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "UchebniPractice.dbo.Flowers_Osipov" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Flowers_Osipov">
+          <Property Name="ID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Class" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
         <EntityType Name="Speciality">
           <Key>
             <PropertyRef Name="SpecialityID" />
@@ -139,6 +165,14 @@
           </Key>
           <Property Name="ZavID" Type="int" Nullable="false" />
           <Property Name="WorkingYears" Type="int" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="ZayavkaID" />
+            <PropertyRef Name="SpecialityID" />
+          </Key>
+          <Property Name="ZayavkaID" Type="int" Nullable="false" />
+          <Property Name="SpecialityID" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "UchebniPractice.dbo.Гимназисты" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -225,6 +259,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Exam__Discipline__5AEE82B9">
+          <End Role="Discipline" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="DisciplineID" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="DisciplineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exam__EmployeeID__5CD6CB2B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exam__RegID__5BE2A6F2">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="RegID" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="RegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Specialit__Ciphe__3E52440B">
           <End Role="Cafedra" Type="Self.Cafedra" Multiplicity="0..1" />
           <End Role="Speciality" Type="Self.Speciality" Multiplicity="*" />
@@ -273,7 +343,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище SModelContainer">
+        <Association Name="FK__Zayavka__Special__59063A47">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speciality">
+              <PropertyRef Name="SpecialityID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="SpecialityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zayavka__Zayavka__5812160E">
+          <End Role="Discipline" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="Zayavka" Type="Self.Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="DisciplineID" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="ZayavkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UchebniPracticeModelContainer">
           <EntitySet Name="Academics" EntityType="Self.Academics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cafedra" EntityType="Self.Cafedra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
@@ -281,6 +375,7 @@
           <EntitySet Name="Discipline" EntityType="Self.Discipline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Engineer" EntityType="Self.Engineer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
@@ -289,6 +384,7 @@
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Upravlenie_Osipov" EntityType="Self.Upravlenie_Osipov" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZavCafedra" EntityType="Self.ZavCafedra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zayavka" EntityType="Self.Zayavka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ученики" EntityType="Self.Ученики" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Гимназисты" EntityType="Self.Гимназисты" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -319,6 +415,18 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Engineer" EntitySet="Engineer" />
           </AssociationSet>
+          <AssociationSet Name="FK__Exam__Discipline__5AEE82B9" Association="Self.FK__Exam__Discipline__5AEE82B9">
+            <End Role="Discipline" EntitySet="Discipline" />
+            <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exam__EmployeeID__5CD6CB2B" Association="Self.FK__Exam__EmployeeID__5CD6CB2B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exam__RegID__5BE2A6F2" Association="Self.FK__Exam__RegID__5BE2A6F2">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
           <AssociationSet Name="FK__Specialit__Ciphe__3E52440B" Association="Self.FK__Specialit__Ciphe__3E52440B">
             <End Role="Cafedra" EntitySet="Cafedra" />
             <End Role="Speciality" EntitySet="Speciality" />
@@ -335,11 +443,19 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="ZavCafedra" EntitySet="ZavCafedra" />
           </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__Special__59063A47" Association="Self.FK__Zayavka__Special__59063A47">
+            <End Role="Speciality" EntitySet="Speciality" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zayavka__Zayavka__5812160E" Association="Self.FK__Zayavka__Zayavka__5812160E">
+            <End Role="Discipline" EntitySet="Discipline" />
+            <End Role="Zayavka" EntitySet="Zayavka" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="UchebniPracticeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Academics">
           <Key>
             <PropertyRef Name="ID" />
@@ -395,6 +511,8 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="CipherID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cafedra" Relationship="Self.FK__Disciplin__Ciphe__412EB0B6" FromRole="Discipline" ToRole="Cafedra" />
+          <NavigationProperty Name="Speciality" Relationship="Self.Zayavka" FromRole="Discipline" ToRole="Speciality" />
+          <NavigationProperty Name="Exam" Relationship="UchebniPracticeModel.FK__Exam__Discipline__5AEE82B9" FromRole="Discipline" ToRole="Exam" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -406,12 +524,13 @@
           <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Chief" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cafedra" Relationship="Self.FK__Employee__Cipher__3B75D760" FromRole="Employee" ToRole="Cafedra" />
           <NavigationProperty Name="Engineer" Relationship="Self.FK__Engineer__EngID__49C3F6B7" FromRole="Employee" ToRole="Engineer" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK__Teacher__Teacher__4CA06362" FromRole="Employee" ToRole="Teacher" />
           <NavigationProperty Name="ZavCafedra" Relationship="Self.FK__ZavCafedr__ZavID__46E78A0C" FromRole="Employee" ToRole="ZavCafedra" />
-          <Property Name="Login" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Exam" Relationship="UchebniPracticeModel.FK__Exam__EmployeeID__5CD6CB2B" FromRole="Employee" ToRole="Exam" />
         </EntityType>
         <EntityType Name="Engineer">
           <Key>
@@ -438,6 +557,7 @@
           <Property Name="CipherID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cafedra" Relationship="Self.FK__Specialit__Ciphe__3E52440B" FromRole="Speciality" ToRole="Cafedra" />
           <NavigationProperty Name="Student" Relationship="Self.FK__Student__Special__4F7CD00D" FromRole="Speciality" ToRole="Student" />
+          <NavigationProperty Name="Discipline" Relationship="Self.Zayavka" FromRole="Speciality" ToRole="Discipline" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -447,6 +567,7 @@
           <Property Name="SpecialityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Speciality" Relationship="Self.FK__Student__Special__4F7CD00D" FromRole="Student" ToRole="Speciality" />
+          <NavigationProperty Name="Exam" Relationship="UchebniPracticeModel.FK__Exam__RegID__5BE2A6F2" FromRole="Student" ToRole="Exam" />
         </EntityType>
         <EntityType Name="Student1">
           <Key>
@@ -624,7 +745,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="Zayavka">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="*" />
+          <End Role="Discipline" Type="Self.Discipline" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SEnt" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Academics" EntityType="Self.Academics" />
           <EntitySet Name="Cafedra" EntityType="Self.Cafedra" />
           <EntitySet Name="Countries" EntityType="Self.Countries" />
@@ -678,15 +803,83 @@
             <End Role="Speciality" EntitySet="Speciality" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
+          <AssociationSet Name="Zayavka" Association="Self.Zayavka">
+            <End Role="Speciality" EntitySet="Speciality" />
+            <End Role="Discipline" EntitySet="Discipline" />
+          </AssociationSet>
+          <EntitySet Name="Exam" EntityType="UchebniPracticeModel.Exam" />
+          <AssociationSet Name="FK__Exam__Discipline__5AEE82B9" Association="UchebniPracticeModel.FK__Exam__Discipline__5AEE82B9">
+            <End Role="Discipline" EntitySet="Discipline" />
+            <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exam__EmployeeID__5CD6CB2B" Association="UchebniPracticeModel.FK__Exam__EmployeeID__5CD6CB2B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exam__RegID__5BE2A6F2" Association="UchebniPracticeModel.FK__Exam__RegID__5BE2A6F2">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Exam">
+          <Key>
+            <PropertyRef Name="ExamDate" />
+            <PropertyRef Name="RegID" />
+          </Key>
+          <Property Name="ExamDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DisciplineID" Type="Int32" Nullable="false" />
+          <Property Name="RegID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Auditorium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mark" Type="Int32" />
+          <NavigationProperty Name="Discipline" Relationship="UchebniPracticeModel.FK__Exam__Discipline__5AEE82B9" FromRole="Exam" ToRole="Discipline" />
+          <NavigationProperty Name="Employee" Relationship="UchebniPracticeModel.FK__Exam__EmployeeID__5CD6CB2B" FromRole="Exam" ToRole="Employee" />
+          <NavigationProperty Name="Student" Relationship="UchebniPracticeModel.FK__Exam__RegID__5BE2A6F2" FromRole="Exam" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK__Exam__Discipline__5AEE82B9">
+          <End Type="UchebniPracticeModel.Discipline" Role="Discipline" Multiplicity="1" />
+          <End Type="UchebniPracticeModel.Exam" Role="Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="DisciplineID" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="DisciplineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exam__EmployeeID__5CD6CB2B">
+          <End Type="UchebniPracticeModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="UchebniPracticeModel.Exam" Role="Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exam__RegID__5BE2A6F2">
+          <End Type="UchebniPracticeModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="UchebniPracticeModel.Exam" Role="Exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="RegID" />
+            </Principal>
+            <Dependent Role="Exam">
+              <PropertyRef Name="RegID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище SModelContainer" CdmEntityContainer="SEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UchebniPracticeModelContainer" CdmEntityContainer="SEnt">
           <EntitySetMapping Name="Academics">
-            <EntityTypeMapping TypeName="SModel.Academics">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Academics">
               <MappingFragment StoreEntitySet="Academics">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
@@ -697,7 +890,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cafedra">
-            <EntityTypeMapping TypeName="SModel.Cafedra">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Cafedra">
               <MappingFragment StoreEntitySet="Cafedra">
                 <ScalarProperty Name="CipherID" ColumnName="CipherID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -706,7 +899,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="SModel.Countries">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Countries">
               <MappingFragment StoreEntitySet="Countries">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -718,7 +911,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries_Osipov">
-            <EntityTypeMapping TypeName="SModel.Countries_Osipov">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Countries_Osipov">
               <MappingFragment StoreEntitySet="Countries_Osipov">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -731,7 +924,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Discipline">
-            <EntityTypeMapping TypeName="SModel.Discipline">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Discipline">
               <MappingFragment StoreEntitySet="Discipline">
                 <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
                 <ScalarProperty Name="NumberOfHours" ColumnName="NumberOfHours" />
@@ -741,21 +934,21 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="SModel.Employee">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="CipherID" ColumnName="CipherID" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Chief" ColumnName="Chief" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Engineer">
-            <EntityTypeMapping TypeName="SModel.Engineer">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Engineer">
               <MappingFragment StoreEntitySet="Engineer">
                 <ScalarProperty Name="EngID" ColumnName="EngID" />
                 <ScalarProperty Name="SpecialityName" ColumnName="SpecialityName" />
@@ -763,7 +956,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Faculty">
-            <EntityTypeMapping TypeName="SModel.Faculty">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Faculty">
               <MappingFragment StoreEntitySet="Faculty">
                 <ScalarProperty Name="AbbrID" ColumnName="AbbrID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -771,7 +964,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Speciality">
-            <EntityTypeMapping TypeName="SModel.Speciality">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Speciality">
               <MappingFragment StoreEntitySet="Speciality">
                 <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -780,7 +973,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Student">
-            <EntityTypeMapping TypeName="SModel.Student">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="RegID" ColumnName="RegID" />
                 <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
@@ -789,7 +982,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Student1">
-            <EntityTypeMapping TypeName="SModel.Student1">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Student1">
               <MappingFragment StoreEntitySet="Student1">
                 <ScalarProperty Name="IDStudent" ColumnName="IDStudent" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -800,7 +993,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SModel.sysdiagrams">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -811,7 +1004,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teacher">
-            <EntityTypeMapping TypeName="SModel.Teacher">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
                 <ScalarProperty Name="PositionAward" ColumnName="PositionAward" />
@@ -820,7 +1013,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Upravlenie_Osipov">
-            <EntityTypeMapping TypeName="SModel.Upravlenie_Osipov">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Upravlenie_Osipov">
               <MappingFragment StoreEntitySet="Upravlenie_Osipov">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Vid" ColumnName="Vid" />
@@ -828,7 +1021,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ZavCafedra">
-            <EntityTypeMapping TypeName="SModel.ZavCafedra">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.ZavCafedra">
               <MappingFragment StoreEntitySet="ZavCafedra">
                 <ScalarProperty Name="ZavID" ColumnName="ZavID" />
                 <ScalarProperty Name="WorkingYears" ColumnName="WorkingYears" />
@@ -836,7 +1029,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ученики">
-            <EntityTypeMapping TypeName="SModel.Ученики">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Ученики">
               <MappingFragment StoreEntitySet="Ученики">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
@@ -847,13 +1040,33 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Гимназисты">
-            <EntityTypeMapping TypeName="SModel.Гимназисты">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Гимназисты">
               <MappingFragment StoreEntitySet="Гимназисты">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
                 <ScalarProperty Name="Предмет" ColumnName="Предмет" />
                 <ScalarProperty Name="Школа" ColumnName="Школа" />
                 <ScalarProperty Name="Баллы" ColumnName="Баллы" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Zayavka" TypeName="UchebniPracticeModel.Zayavka" StoreEntitySet="Zayavka">
+            <EndProperty Name="Speciality">
+              <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
+            </EndProperty>
+            <EndProperty Name="Discipline">
+              <ScalarProperty Name="DisciplineID" ColumnName="ZayavkaID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Exam">
+            <EntityTypeMapping TypeName="UchebniPracticeModel.Exam">
+              <MappingFragment StoreEntitySet="Exam">
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="Auditorium" ColumnName="Auditorium" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RegID" ColumnName="RegID" />
+                <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

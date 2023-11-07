@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudentExam.db;
 
 namespace StudentExam.pages
 {
@@ -21,9 +22,19 @@ namespace StudentExam.pages
     /// </summary>
     public partial class TeacherPage : Page
     {
+        Employee empToSend = new Employee();
+        public static List<Exam> Exam { get; set; }
         public TeacherPage(Employee emp)
         {
             InitializeComponent();
+            empToSend = emp;
+            ExamLV.ItemsSource = DBConn.SEnt.Exam.ToList();
+            PrepNameTBk.Text += $" {emp.Surname}";
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new LoginPage());
         }
     }
 }

@@ -57,5 +57,10 @@ namespace StudentExam.pages
                 }
             }
         }
+
+        private void GuestTBx_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GuestPage());
+        }
     }
 }
