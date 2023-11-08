@@ -15,7 +15,7 @@ namespace StudentExam.db
     public partial class Exam
     {
         public System.DateTime ExamDate { get; set; }
-        public Nullable<int> DisciplineID { get; set; }
+        public int DisciplineID { get; set; }
         public int RegID { get; set; }
         public Nullable<int> EmployeeID { get; set; }
         public string Auditorium { get; set; }

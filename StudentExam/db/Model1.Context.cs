@@ -13,10 +13,10 @@ namespace StudentExam.db
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SEnt : DbContext
+    public partial class UchebniPracticeEntities : DbContext
     {
-        public SEnt()
-            : base("name=SEnt")
+        public UchebniPracticeEntities()
+            : base("name=UchebniPracticeEntities")
         {
         }
     

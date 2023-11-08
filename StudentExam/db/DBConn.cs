@@ -8,6 +8,6 @@ namespace StudentExam.db
 {
     public class DBConn
     {
-        public static SEnt SEnt = new SEnt();
+        public static UchebniPracticeEntities SEnt = new UchebniPracticeEntities();
     }
 }

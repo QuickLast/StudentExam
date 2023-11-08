@@ -45,6 +45,10 @@
         <PasswordBox Name="PasswordTBx" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="4" Height="30"></PasswordBox>
 
         <Button Name="AuthTBx" Grid.Row="7" Grid.Column="4" Margin="10 5" Grid.ColumnSpan="2" Content="Sign in" Click="AuthTBx_Click"></Button>
+
+        <Image x:Name="imageQr" Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="3" ></Image>
+        <Button Name="QRBtn" Grid.Row="7" Grid.Column="9" Margin="10 5" Grid.ColumnSpan="2" Content="QR-Code" Click="Button_Click"></Button>
+
         <Button Name="GuestTBx" Grid.Row="7" Grid.Column="6" Margin="10 5" Grid.ColumnSpan="2" Content="Enter as Guest" Click="GuestTBx_Click"></Button>
         <TextBlock FontStyle="Italic" Name="ErrorTBk" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="4"
                    TextAlignment="Center" VerticalAlignment="Center"></TextBlock>

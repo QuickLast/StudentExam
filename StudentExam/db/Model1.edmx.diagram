@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7e0ac2c12c44410db48b32b3072db6f4" Name="Diagram1">
+      <Diagram DiagramId="00f49daa739f4726b6f6dbd6021b3059" Name="Diagram1">
         <EntityTypeShape EntityType="UchebniPracticeModel.Academics" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UchebniPracticeModel.Cafedra" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UchebniPracticeModel.Countries" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
@@ -23,18 +23,18 @@
         <EntityTypeShape EntityType="UchebniPracticeModel.ZavCafedra" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="UchebniPracticeModel.Ученики" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UchebniPracticeModel.Гимназисты" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Cafedra__AbbrID__5BE2A6F2" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Disciplin__Ciphe__5DCAEF64" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Employee__Cipher__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Specialit__Ciphe__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Countries__TypeO__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Exam__Discipline__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Engineer__EngID__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Exam__EmployeeID__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Teacher__Teacher__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__ZavCafedr__ZavID__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Exam__RegID__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="UchebniPracticeModel.FK__Student__Special__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Cafedra__AbbrID__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Disciplin__Ciphe__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Employee__Cipher__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Specialit__Ciphe__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Countries__TypeO__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Exam__Discipline__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Engineer__EngID__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Exam__EmployeeID__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Teacher__Teacher__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__ZavCafedr__ZavID__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Exam__RegID__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="UchebniPracticeModel.FK__Student__Special__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="UchebniPracticeModel.Zayavka" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
